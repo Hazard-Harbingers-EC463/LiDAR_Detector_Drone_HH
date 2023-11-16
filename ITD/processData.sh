@@ -1,7 +1,7 @@
 #!/bin/bash
 # Must run as administrator
 
-# Parameters for creating models
+# Parameters for creating DTM and CHM
 CELL_SIZE=5
 XY_UNITS=m
 Z_UNITS=m
@@ -9,6 +9,10 @@ COORD_SYS=0
 ZONE=0
 HORIZ_DATUM=0
 VERT_DATUM=0
+
+# Parameter for Tree Segmentation
+MIN_HEIGHT=2
+
 
 # Get LiDAR data: convert to LAS format
 echo ">> Please input file path to LiDAR data: "
@@ -34,6 +38,7 @@ origDataFilePath=$filePath
 gndPtFilePath="${directory}/ground_points.las"
 dtmFilePath=${directory}/digital_terrain.dtm
 chmFilePath=${directory}/canopy_height.dtm
+treeSegmFilePath=${directory}/tree_segm.csv
 
 echo ">> Filtering ground points..."
 GroundFilter $gndPtFilePath $CELL_SIZE $origDataFilePath
@@ -49,6 +54,11 @@ echo ">> Creating canopy height model (CHM)"
 CanopyModel $chmFilePath $CELL_SIZE $XY_UNITS $Z_UNITS $COORD_SYS $ZONE $HORIZ_DATUM $VERT_DATUM $origDataFilePath
 #CanopyModel /ground:$dtmFilePath $chmFilePath $CELL_SIZE $XY_UNITS $Z_UNITS $COORD_SYS $ZONE $HORIZ_DATUM $VERT_DATUM $origDataFilePath
 echo ">> CHM found here: $chmFilePath"
+sleep 3
+
+echo ">> Detecting trees"
+TreeSeg $chmFilePath $MIN_HEIGHT $treeSegmFilePath
+echo ">> Tree detection results found here: $treeSegmFilePath"
 sleep 3
 
 sleep 100
