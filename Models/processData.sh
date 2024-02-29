@@ -39,6 +39,7 @@ dtmFilePath=${outPath}/digital_terrain.dtm
 dsmFilePath=${outPath}/digital_surface.dtm
 chmFilePath=${outPath}/canopy_height.dtm
 treeSegmFilePath=${outPath}/tree_segm.csv
+treeStatsFilePath=${outPath}/tree_segm_Basin_Stats.csv
 canopyCoverFilePath=${outPath}/cover.dtm
 coverXYZFilePath=${outPath}/cover.xyz
 densityFilePath=${outPath}/density
@@ -71,6 +72,7 @@ echo ">> Detecting trees"
 MIN_HEIGHT=2
 TreeSeg $chmFilePath $MIN_HEIGHT $treeSegmFilePath
 echo ">> Tree detection results found here: $treeSegmFilePath"
+python visualize2D.py $treeStatsFilePath "Tree Segments" "./figures/tree.png"
 sleep 3
 
 # ========= Canopy Cover =========
@@ -87,7 +89,7 @@ sleep 3
 # ========= Vegetation Density for Various Height Strata =========
 echo ">> Vegetation density"
 BTM_HT=0
-TOP_HT=15
+TOP_HT=50
 STEP=3
 for ((i=BTM_HT; i<=TOP_HT; i+=STEP)); do
     UPPER_HT=$((i+STEP))
