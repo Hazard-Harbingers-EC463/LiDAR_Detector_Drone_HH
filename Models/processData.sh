@@ -40,6 +40,7 @@ dsmFilePath=${outPath}/digital_surface.dtm
 chmFilePath=${outPath}/canopy_height.dtm
 treeSegmFilePath=${outPath}/tree_segm.csv
 canopyCoverFilePath=${outPath}/cover.dtm
+coverXYZFilePath=${outPath}/cover.xyz
 densityFilePath=${outPath}/density
 
 echo ">> Filtering ground points..."
@@ -78,6 +79,9 @@ HEIGHT_BRK=8
 OP_CELL_SZ=50
 Cover $dtmFilePath $canopyCoverFilePath $HEIGHT_BRK $OP_CELL_SZ $XY_UNITS $Z_UNITS $COORD_SYS $ZONE $HORIZ_DATUM $VERT_DATUM $origDataFilePath
 echo ">> Canopy cover model found here: $canopyCoverFilePath"
+DTM2XYZ $canopyCoverFilePath $coverXYZFilePath
+echo ">> Canopy cover in .xyz found here: $coverXYZFilePath"
+python visualize2D.py $coverXYZFilePath "Canopy Cover" "./figures/cover.png"
 sleep 3
 
 # ========= Vegetation Density for Various Height Strata =========
@@ -88,9 +92,13 @@ STEP=3
 for ((i=BTM_HT; i<=TOP_HT; i+=STEP)); do
     UPPER_HT=$((i+STEP))
     densityFile=${densityFilePath}_${i}_${UPPER_HT}.dtm
+    densityXyzFile=${densityFilePath}_${i}_${UPPER_HT}.xyz
 
     ./density.bat /upper:$UPPER_HT $dtmFilePath $densityFile $i $OP_CELL_SZ $XY_UNITS $Z_UNITS $COORD_SYS $ZONE $HORIZ_DATUM $VERT_DATUM $origDataFilePath
     echo ">> Density in the range of $i and $UPPER_HT above the ground can be found here: $densityFile"
+    DTM2XYZ $densityFile $densityXyzFile
+    echo ">> Density in the range of $i and $UPPER_HT above the ground can be found here: $densityXyzFile"
+    python visualize2D.py $densityXyzFile "Density in range of $i and $UPPER_HT meters above ground" "./figures/density_${i}_${UPPER_HT}.png"
 done
 sleep 3
 

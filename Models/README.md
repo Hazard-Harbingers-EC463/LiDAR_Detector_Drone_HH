@@ -1,5 +1,4 @@
-# Individual Tree Detection (ITD)
-
+# Models
 
 ## Resources
 * https://www.mdpi.com/1999-4907/8/9/340 
