@@ -8,7 +8,7 @@ propose a novel system that integrates an airborne LiDAR system and deployable s
 nodes. This system will result in 3D models and relevant environmental data.
 
 ## Top-level directory layout
-.
+.  
 ├── Reports	# Information about our system  
 ├── Models	# 3D models and 2D heat maps  
 ├── LAStools	# Executables used to produce models  
