@@ -12,6 +12,7 @@ nodes. This system will result in 3D models and relevant environmental data.
 ├── Reports	# Information about our system  
 ├── Models	# 3D models and 2D heat maps  
 ├── LAStools	# Executables used to produce models  
+├── ALS # Aerial LiDAR system: collecting and preprocessing data
 ├── README.md  
 ├── README_Hardware.md # Description about hardware  
 └── README_Software.md # Description about software  
