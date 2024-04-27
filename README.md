@@ -16,15 +16,15 @@ For a quick reference guide to the software, please refer to the Software README
 ## Top-level directory layout
 .  
 ├── Reports	# Information about our system  
-├── Models	# 3D models and 2D heat maps  
-├── LAStools	# Executables used to produce models  
-├── ALS # Aerial LiDAR system: collecting data  
-├── lidarLaserAssembler/laser_to_pcl # Preprocessing LiDAR data
-├── Figures
-├── .gitignore
-├── README.md	# Engineering Addendum 
-├── README_Hardware.md # Description about hardware  
-└── README_Software.md # Description about software  
+├── Models	# 3D models and 2D heat maps    
+├── LAStools	# Executables used to produce models    
+├── ALS # Aerial LiDAR system: collecting data    
+├── lidarLaserAssembler/laser_to_pcl # Preprocessing LiDAR data  
+├── Figures  
+├── .gitignore  
+├── README.md	# Engineering Addendum   
+├── README_Hardware.md # Description about hardware    
+└── README_Software.md # Description about software    
 
 
 ## System specifications
