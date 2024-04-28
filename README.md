@@ -55,16 +55,16 @@ For a quick reference guide to the software, please refer to the Software README
 
 ## Required Materials
 ### Hardware: Aerial LiDAR System
-* DJI Inspire 1 Pro (drone)   
-* SICK multiscan100 LiDAR   
-* Jetson Orin Nano   
+* DJI Inspire 1 Pro V2 Drone   
+* SICK multiScan100 LiDAR   
+* Jetson Orin Nano Development Board (Jetpack 5 / Ubuntu 20.04)
 
 ### Hardware: Embedded Nodes System
-* SAMD21 Pro RF   
-* RMF95W 915MHz Transceiver   
-* BME688 Sensor   
-* 128GB SD   
-* I2C SD Card Breakout   
+* SparkFun Atmel-SAMD21 Pro RF   
+* HopeRF RMF95W 915MHz Transceiver   
+* Bosch Sensortech BME688 Sensor Board
+* 128GB microSD Card
+* SPI SD Card Breakout
 
 ### Software 
 * Scripts to preprocess LiDAR data: lidarLaserAssembler/laser_to_pcl
